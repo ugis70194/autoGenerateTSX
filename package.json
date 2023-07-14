@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ugis70194/autoGenerateTSX#readme",
   "dependencies": {
-    "actions-toolkit": "^6.0.1"
+    "actions-toolkit": "^6.0.1",
+    "jsonc": "^2.0.0"
   }
 }

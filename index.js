@@ -1,8 +1,12 @@
 const { Toolkit } = require('actions-toolkit');
+const jsonc = require('jsonc');
 const fs = require('fs');
 
-const workingDir = `${process.env.GITHUB_WORKSPACE}/contents`;
+const appRoot = `${process.env.GITHUB_WORKSPACE}`;
+const workingDir = `${appRoot}/contents`;
+const genres = ["Manga", "Novel", "Illust", "CD", "Goods", "PhotoAlbum","Anthology", "Contribution", "Consideration"];
 
+//detail.jsonに記載された
 function toTypeScriptFromat(work, detail){
   let body = "";
   for(const key of Object.keys(detail)){
@@ -12,16 +16,20 @@ function toTypeScriptFromat(work, detail){
   return `const ${work}: Work = {${body}}`
 }
 
+function existGenre(works){
+
+}
+
 Toolkit.run(async tools => {
   console.log(workingDir);
   try {
     const works = fs.readdirSync(workingDir);
     console.log(works);
     for(const work of works){
-      const targetDir = `${workingDir}/${work}`; 
-      const detailPath = `${targetDir}/detail.json`;
-      console.log(targetDir);
-      const detail = JSON.parse(fs.readFileSync(detailPath, "utf-8"));
+      const readTargetDir = `${workingDir}/${work}`; 
+      const detailPath = `${readTargetDir}/detail.json`;
+      console.log(readTargetDir);
+      const detail = jsonc.parse(fs.readFileSync(detailPath, "utf-8"));
       console.log(detail);
       console.log(toTypeScriptFromat(work, detail))
     }
