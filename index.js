@@ -19,8 +19,9 @@ Toolkit.run(async tools => {
     console.log(works);
     for(const work of works){
       const targetDir = `${workingDir}/${work}`; 
+      const detailPath = `${targetDir}/detail.json`;
       console.log(targetDir);
-      const detail = JSON.parse(fs.readFileSync(targetDir, "utf-8"));
+      const detail = JSON.parse(fs.readFileSync(detailPath, "utf-8"));
       console.log(detail);
       console.log(toTypeScriptFromat(work, detail))
     }
