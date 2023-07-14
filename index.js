@@ -7,6 +7,7 @@ Toolkit.run(async tools => {
   console.log(targetDir);
   try {
     const works = fs.readdirSync(targetDir);
+    console.log(works)
   } catch (e) {
     tools.log.fatal(e);
     tools.exit.failure('Failed');
