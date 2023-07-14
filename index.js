@@ -13,7 +13,7 @@ function toTypeScriptFromat(work, detail){
 }
 
 Toolkit.run(async tools => {
-  console.log(targetDir);
+  console.log(workingDir);
   try {
     const works = fs.readdirSync(workingDir);
     console.log(works);
