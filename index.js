@@ -1,7 +1,7 @@
 const { Toolkit } = require('actions-toolkit');
 const fs = require('fs');
 
-const workingDir = `${process.env.GITHUB_WORKSPACE}/${contents}`;
+const workingDir = `${process.env.GITHUB_WORKSPACE}/contents`;
 
 function toTypeScriptFromat(work, detail){
   let body = "";

@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v3
       - name: generate
         id: generete
-        uses: ugis70194/autoGenerateTSX@v0.4
+        uses: ugis70194/autoGenerateTSX@main
