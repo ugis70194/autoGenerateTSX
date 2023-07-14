@@ -1,0 +1,23 @@
+{
+  "name": "autogeneratetsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ugis70194/autoGenerateTSX.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ugis70194/autoGenerateTSX/issues"
+  },
+  "homepage": "https://github.com/ugis70194/autoGenerateTSX#readme",
+  "dependencies": {
+    "actions-toolkit": "^6.0.1"
+  }
+}
