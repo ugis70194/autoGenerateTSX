@@ -1,5 +1,5 @@
-name: 'component auto generetor'
-description: 'file system test'
+name: 'auto-generate-tsx'
+description: 'auto-generate-tsx from contents dir'
 runs:
   using: 'node16'
   main: 'index.js'
