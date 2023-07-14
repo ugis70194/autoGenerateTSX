@@ -1,0 +1,15 @@
+on: 
+  push:
+    branches:
+      - dev
+
+jobs:
+  auto_generate_jsx:
+    runs-on: ubuntu-latest
+    name: auto_generate_jsx
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: generate
+        id: generete
+        uses: ugis70194/auto-generate-tsx@dev

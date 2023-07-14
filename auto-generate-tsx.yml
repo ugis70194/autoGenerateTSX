@@ -1,0 +1,5 @@
+name: 'component auto generetor'
+description: 'file system test'
+runs:
+  using: 'node16'
+  main: 'index.js'
