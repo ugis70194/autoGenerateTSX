@@ -1,9 +1,6 @@
 name: auto_generate_jsx
 
-on: 
-  push:
-    branches:
-      - dev
+on: [push]
 
 jobs:
   auto_generate_jsx:
@@ -14,4 +11,4 @@ jobs:
         uses: actions/checkout@v3
       - name: generate
         id: generete
-        uses: ugis70194/autogeneratetsx
+        uses: ugis70194/auto-generate-tsx
