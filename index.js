@@ -1,7 +1,7 @@
 const { Toolkit } = require('actions-toolkit');
 const fs = require('fs');
 
-const workingDir = process.env.GITHUB_WORKSPACE+"/contents";
+const workingDir = `${process.env.GITHUB_WORKSPACE}/${contents}`;
 
 function toTypeScriptFromat(work, detail){
   let body = "";
@@ -18,7 +18,7 @@ Toolkit.run(async tools => {
     const works = fs.readdirSync(workingDir);
     console.log(works);
     for(const work of works){
-      const targetDir = workingDir + work; 
+      const targetDir = `${workingDir}/${work}`; 
       console.log(targetDir);
       const detail = JSON.parse(fs.readFileSync(targetDir, "utf-8"));
       console.log(detail);
