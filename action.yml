@@ -3,3 +3,12 @@ description: 'auto-generate-tsx from contents dir'
 runs:
   using: 'node16'
   main: 'index.js'
+  inputs:
+  contents_directory:
+    description: 'under GITHUB_WORKSPACE'
+    defualt: 'contents'
+  target_jsonc:
+    defualt: 'detail.jsonc'
+  components_directory:
+    description: 'under GITHUB_WORKSPACE'
+    defualt: 'generated_components'

@@ -18,3 +18,7 @@ jobs:
       - name: generate
         id: generete
         uses: ugis70194/autoGenerateTSX@main
+        with: 
+          contents_directory: 'contents'
+          target_jsonc: 'detail.jsonc'
+          components_directory: 'components'
