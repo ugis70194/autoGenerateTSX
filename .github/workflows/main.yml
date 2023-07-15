@@ -21,4 +21,4 @@ jobs:
         with: 
           contents_directory: 'contents'
           target_jsonc: 'detail.jsonc'
-          components_directory: 'components'
+          components_directory: 'generated_components'
