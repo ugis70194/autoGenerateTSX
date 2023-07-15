@@ -3,7 +3,7 @@ description: 'auto-generate-tsx from contents dir'
 runs:
   using: 'node16'
   main: 'index.js'
-  inputs:
+inputs:
   contents_directory:
     description: 'under GITHUB_WORKSPACE'
     defualt: 'contents'
