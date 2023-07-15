@@ -7,6 +7,8 @@ on:
     paths-ignore:
       - '**/generated_components/**'
 
+permissions: write-all
+
 jobs:
   auto_generate_jsx:
     runs-on: ubuntu-latest
