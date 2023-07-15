@@ -6,7 +6,7 @@ const appRoot = `${process.env.GITHUB_WORKSPACE}`;
 const workingDir = `${appRoot}/contents`;
 const genres = ["Manga", "Novel", "Illust", "CD", "Goods", "PhotoAlbum","Anthology", "Contribution", "Consideration"];
 
-//detail.jsonに記載された
+//detail.jsonに記載されたデータをTypeScriptのObjectに変換
 function toTypeScriptFromat(work, detail){
   let body = "";
   for(const key of Object.keys(detail)){
@@ -16,8 +16,9 @@ function toTypeScriptFromat(work, detail){
   return `const ${work}: Work = {${body}}`
 }
 
+//コンテンツとして存在しているジャンルの配列を返す
 function existGenre(works){
-
+  return [...new Set(works.map(work => work.genre))];
 }
 
 Toolkit.run(async tools => {
