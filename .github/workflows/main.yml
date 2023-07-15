@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: genre_check
+        id: check
+        uses: ugis70194/genre_check@main
+        with: 
+          target_directory: 'contents'
+          target_jsonc: 'detail.jsonc'
       - name: generate
         id: generete
         uses: ugis70194/autoGenerateTSX@main
