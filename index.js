@@ -33,6 +33,17 @@ function generateEmptyComponent(genre){
   console.log(`generated ${componentPath}`);
 }
 
+//生成したファイルのコミットとプッシュ
+function commitAndPush(){
+  Toolkit.run(async tools => {
+    await tools.exec("git config user.name github-actions");
+    await tools.exec("git config user.email github-actions@github.com");
+    await tools.exec("git add .");
+    await tools.exec('git commit -m "generated"');
+    await tools.exec("git push");
+  })
+}
+
 Toolkit.run(async tools => {
   try {
     const works = fs.readdirSync(contentsDir);
@@ -45,6 +56,7 @@ Toolkit.run(async tools => {
       const detailPath = `${readTargetDir}/${process.env.INPUT_TARGET_JSONC}`;
       const detail = jsonc.parse(fs.readFileSync(detailPath, "utf-8"));
       console.log(detail.genre);
+      commitAndPush();
     }
   } catch (e) {
     tools.log.fatal(e);

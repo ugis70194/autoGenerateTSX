@@ -1,6 +1,11 @@
 name: auto_generate_jsx
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/generated_components/**'
 
 jobs:
   auto_generate_jsx:
