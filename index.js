@@ -1,7 +1,6 @@
 const { Toolkit } = require('actions-toolkit');
 const jsonc = require('jsonc');
 const fs = require('fs');
-const { generateKey } = require('crypto');
 
 const appRoot = `${process.env.GITHUB_WORKSPACE}`;
 const contentsDir = `${appRoot}/${process.env.INPUT_CONTENTS_DIRECTORY}`;
@@ -29,8 +28,8 @@ function existGenre(works){
 
 //空のコンポーネントの生成
 function generateEmptyComponent(genre){
-  console.log(`generate ${componentPath}`);
   const componentPath = `${componentsDir}/${genre}.tsx`;
+  console.log(`generate ${componentPath}`);
   fs.writeFileSync(componentPath, "");
   console.log(`generated ${componentPath}`);
 }
