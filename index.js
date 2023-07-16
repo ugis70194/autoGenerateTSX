@@ -57,7 +57,7 @@ Toolkit.run(async tools => {
     // 生成したコンポーネントを反映
     await tools.exec("git config --global user.name github-actions");
     await tools.exec("git config --global user.email github-actions@github.com");
-    await tools.exec(`git add ${componentsDir}/* -n`);
+    await tools.exec(`git add . -n`);
     await tools.exec('git commit -m "generated"');
     await tools.exec("git push");
     console.log("commit and push");
