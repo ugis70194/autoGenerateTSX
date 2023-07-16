@@ -30,23 +30,11 @@ function existGenre(works){
 function generateEmptyComponent(genre){
   const componentPath = `${componentsDir}/${genre}.tsx`;
   fs.writeFileSync(componentPath, "");
-}
-
-//生成したファイルのコミットとプッシュ
-function commitAndPush(){
-  Toolkit.run(async tools => {
-    await tools.exec("git config --global user.name github-actions");
-    await tools.exec("git config --global user.email github-actions@github.com");
-    await tools.exec(`git add ${componentsDir}/* -n`);
-    await tools.exec('git commit -m "generated"');
-    await tools.exec("git push origin main");
-  })
-  console.log("commit & push");
+  console.log(`generate ${genre}.tsx`);
 }
 
 Toolkit.run(async tools => {
   try {
-    console.log(appRoot);
     // 作品のデータを取得
     const works = fs.readdirSync(contentsDir);
 
@@ -67,7 +55,12 @@ Toolkit.run(async tools => {
     }
 
     // 生成したコンポーネントを反映
-    commitAndPush();
+    await tools.exec("git config --global user.name github-actions");
+    await tools.exec("git config --global user.email github-actions@github.com");
+    await tools.exec(`git add ${componentsDir}/* -n`);
+    await tools.exec('git commit -m "generated"');
+    await tools.exec("git push origin main");
+    console.log("commit and push");
 
     tools.exit.success('Incrementing the value successfully.');
   } catch (e) {
