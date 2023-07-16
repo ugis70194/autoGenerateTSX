@@ -59,7 +59,6 @@ Toolkit.run(async tools => {
       console.log(detail.genre);
     }
 
-
     commitAndPush();
     tools.exit.success('Incrementing the value successfully.');
   } catch (e) {
