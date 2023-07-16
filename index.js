@@ -51,13 +51,17 @@ Toolkit.run(async tools => {
     const genres = existGenre(works);
     for(const genre of genres) generateEmptyComponent(genre);
 
+    // コンポーネントの中身を生成
     for(const work of works){
       const readTargetDir = `${contentsDir}/${work}`; 
       const detailPath = `${readTargetDir}/${process.env.INPUT_TARGET_JSONC}`;
       const detail = jsonc.parse(fs.readFileSync(detailPath, "utf-8"));
       console.log(detail.genre);
-      commitAndPush();
     }
+
+
+    commitAndPush();
+    tools.exit.success('Incrementing the value successfully.');
   } catch (e) {
     tools.log.fatal(e);
     tools.exit.failure('Failed');
