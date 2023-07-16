@@ -40,13 +40,14 @@ function commitAndPush(){
     await tools.exec("git config user.email github-actions@github.com");
     await tools.exec("git add .");
     await tools.exec('git commit -m "generated"');
-    await tools.exec("git push");
+    await tools.exec("git push origin main");
   })
   console.log("commit & push");
 }
 
 Toolkit.run(async tools => {
   try {
+    console.log(appRoot);
     const works = fs.readdirSync(contentsDir);
     // 空のコンポーネントを生成
     const genres = existGenre(works);
