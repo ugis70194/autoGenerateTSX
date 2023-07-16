@@ -66,7 +66,6 @@ Toolkit.run(async tools => {
       const readTargetDir = `${contentsDir}/${work}`; 
       const detailPath = `${readTargetDir}/${process.env.INPUT_TARGET_JSONC}`;
       const detail = jsonc.parse(fs.readFileSync(detailPath, "utf-8"));
-      console.log(detail.genre);
     }
 
     // 生成したコンポーネントを反映
