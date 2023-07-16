@@ -59,7 +59,7 @@ Toolkit.run(async tools => {
     await tools.exec("git config --global user.email github-actions@github.com");
     await tools.exec(`git add ${componentsDir}/* -n`);
     await tools.exec('git commit -m "generated"');
-    await tools.exec("git push origin main");
+    await tools.exec("git push");
     console.log("commit and push");
 
     tools.exit.success('Incrementing the value successfully.');
