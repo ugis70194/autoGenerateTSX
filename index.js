@@ -1,6 +1,7 @@
 const { Toolkit } = require('actions-toolkit');
 const jsonc = require('jsonc');
 const fs = require('fs');
+const { generateKey } = require('crypto');
 
 const appRoot = `${process.env.GITHUB_WORKSPACE}`;
 const contentsDir = `${appRoot}/${process.env.INPUT_CONTENTS_DIRECTORY}`;
@@ -28,6 +29,7 @@ function existGenre(works){
 
 //空のコンポーネントの生成
 function generateEmptyComponent(genre){
+  console.log(`generate ${componentPath}`)
   const componentPath = `${componentsDir}/${genre}.tsx`;
   fs.writeFileSync(componentPath, "");
   console.log(`generated ${componentPath}`);
@@ -48,12 +50,19 @@ function commitAndPush(){
 Toolkit.run(async tools => {
   try {
     console.log(appRoot);
+    // 作品のデータを取得
     const works = fs.readdirSync(contentsDir);
+
+    // 自動生成されるコンポーネントを格納するディレクトリがない場合は作成
+    if(!fs.existsSync(componentsDir)){
+      fs.mkdtempSync(componentsDir);
+    }
+
     // 空のコンポーネントを生成
     const genres = existGenre(works);
     for(const genre of genres) generateEmptyComponent(genre);
 
-    // コンポーネントの中身を生成
+    // 作品のデータからコンポーネントの中身を生成
     for(const work of works){
       const readTargetDir = `${contentsDir}/${work}`; 
       const detailPath = `${readTargetDir}/${process.env.INPUT_TARGET_JSONC}`;
@@ -61,7 +70,9 @@ Toolkit.run(async tools => {
       console.log(detail.genre);
     }
 
+    // 生成したコンポーネントを反映
     commitAndPush();
+
     tools.exit.success('Incrementing the value successfully.');
   } catch (e) {
     tools.log.fatal(e);
