@@ -42,6 +42,7 @@ function commitAndPush(){
     await tools.exec('git commit -m "generated"');
     await tools.exec("git push");
   })
+  console.log("commit & push");
 }
 
 Toolkit.run(async tools => {
