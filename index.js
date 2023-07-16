@@ -29,17 +29,15 @@ function existGenre(works){
 //空のコンポーネントの生成
 function generateEmptyComponent(genre){
   const componentPath = `${componentsDir}/${genre}.tsx`;
-  console.log(`generate ${componentPath}`);
   fs.writeFileSync(componentPath, "");
-  console.log(`generated ${componentPath}`);
 }
 
 //生成したファイルのコミットとプッシュ
 function commitAndPush(){
   Toolkit.run(async tools => {
-    await tools.exec("git config user.name github-actions");
-    await tools.exec("git config user.email github-actions@github.com");
-    await tools.exec("git add .");
+    await tools.exec("git config --global user.name github-actions");
+    await tools.exec("git config --global user.email github-actions@github.com");
+    await tools.exec(`git add ${componentsDir}/* -n`);
     await tools.exec('git commit -m "generated"');
     await tools.exec("git push origin main");
   })
