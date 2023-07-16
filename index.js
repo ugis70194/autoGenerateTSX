@@ -54,7 +54,7 @@ Toolkit.run(async tools => {
 
     // 自動生成されるコンポーネントを格納するディレクトリがない場合は作成
     if(!fs.existsSync(componentsDir)){
-      fs.mkdtempSync(componentsDir);
+      fs.mkdirSync(componentsDir);
     }
 
     // 空のコンポーネントを生成
