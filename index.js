@@ -29,7 +29,7 @@ function existGenre(works){
 
 //空のコンポーネントの生成
 function generateEmptyComponent(genre){
-  console.log(`generate ${componentPath}`)
+  console.log(`generate ${componentPath}`);
   const componentPath = `${componentsDir}/${genre}.tsx`;
   fs.writeFileSync(componentPath, "");
   console.log(`generated ${componentPath}`);
